@@ -12,7 +12,7 @@ export const AppRouter = () => {
   return (
       // Recomendable manejar el switch dentro de un div
       <Router>
-        <div>
+        <>
           <Switch>
             
             <Route path="/auth" component={AuthRouter} />
@@ -21,7 +21,7 @@ export const AppRouter = () => {
             <Redirect to="/auth/login" />
 
           </Switch>
-        </div>
+        </>
       </Router>
 
   )

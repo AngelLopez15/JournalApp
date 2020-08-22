@@ -1,3 +1,12 @@
-body{
-  background-color: burlywood;
-}
+// importando archivos
+// Deben ir el orden por motivos de la cascada
+
+@import './base/settings';
+@import './base/base';
+
+// components
+
+@import './components/auth';
+@import './components/buttons';
+@import './components/links';
+@import './components/journal';
