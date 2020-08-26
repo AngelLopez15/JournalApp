@@ -20,6 +20,7 @@ Cuando ya se esta autentificado el objeto se llenara con:
 // es recomendable ponerlos en un archivo separado donde solo estaran los
 // types. 
 
+// El state siempre debe de regresar algo. No debe de ser null ni undefined
 export const authReducer = (state={},action) => {
 
   switch (action.type) {
