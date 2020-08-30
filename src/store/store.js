@@ -1,7 +1,11 @@
 // Creando el Store (la fuente de la verdad) de Redux
 
 // importando el store de Redux
-import { createStore, combineReducers } from "redux";
+import { createStore, combineReducers, compose, applyMiddleware } from "redux";
+
+// importando thunk para usar los middleware
+import thunk from 'redux-thunk';
+
 import { authReducer } from "../reducers/authReducer";
 
 // creando el store
@@ -21,11 +25,21 @@ const reducers = combineReducers({
   auth: authReducer
 })
 
+// Como necetamos enviar un middleware al store pero el segundo argumento ya esta ocupado por
+// window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+// entonces debemos ocupar el composeEnhances de la misma documentacion de Redux para poder enviar
+// otro middleware
+const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
+
 // pasando los reducer al Store
 
 // El segundo argumento es para poder ocupar las herramientas de desarrollo de 
 // Redux en el navegador
+// con el applyMiddlewate ya tenemos configurado todo para hacer petisiones asincronas
 export const store = createStore(
   reducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  composeEnhancers(
+    applyMiddleware(thunk)
+  )
 )
