@@ -9,7 +9,7 @@ export const LoginScreen = () => {
   // Hook de Redux para hacer un dispatch
   const dispatch = useDispatch()
   
-  const [formValues, handleInputChange, reset] = useForm({
+  const [formValues, handleInputChange] = useForm({
     email:'correo@correo.com',
     password:'123456'
   })
